@@ -11,23 +11,15 @@ class Solution {
         while (left < right) {
             if (maxLeft < maxRight) {
                 left++;
-                result += water(maxLeft, maxRight, height[left]);
                 maxLeft = Math.max(maxLeft, height[left]);
+                result += maxLeft - height[left];
             } else {
                 right--;
-                result += water(maxLeft, maxRight, height[right]);
                 maxRight = Math.max(maxRight, height[right]);
+                result += maxRight - height[right];
             }
         }
         
         return result;
-    }
-    
-    private int water(int maxLeft, int maxRight, int h) {
-        int water = Math.min(maxLeft, maxRight) - h;
-        if (water > 0) {
-            return water;
-        }
-        return 0;
     }
 }
